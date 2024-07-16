@@ -6,7 +6,6 @@ services:
     image: traefik:v3.0
     command:
       - "--api.insecure=true"
-#      - "traefik.http.middlewares.auth.basicauth.users=admin:$apr1$8v29g4Xx$2tcqmHP9atbg41MMYLL2L1" # mahmoud123456
       - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
@@ -17,19 +16,11 @@ services:
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
     ports:
       - "80:80"
-      - "443:443"
       - "8080:8080"
+      - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/www/letsencrypt/acme.json:/etc/traefik/acme/acme.json
     labels:
       - "traefik.enable=true"
-#      - "traefik.http.routers.dashboard-http.entrypoints=web"
-#      - "traefik.http.routers.dashboard-http.service=api@internal"
-#      - "traefik.http.routers.dashboard.entrypoints=websecure"
-#      - "traefik.http.routers.dashboard-http.rule=Host(`portal.trio-travel.com`)"
-#      - "traefik.http.routers.dashboard.rule=Host(`portal.trio-travel.com`)"
-#      - "traefik.http.routers.dashboard.tls.certresolver=letsencrypt"
-#      - "traefik.http.routers.dashboard.service=api@internal"
-#      - "traefik.http.routers.dashboard.tls=true"
-#      - "traefik.http.routers.dashboard.middlewares=auth"
+- "traefik.http.routers.dashboard-http.entrypoints=web"

@@ -3,6 +3,8 @@ FROM php:8.0-apache
 # Install additional PHP extensions if needed
 RUN docker-php-ext-install pdo pdo_mysql
 
+RUN a2enmod ssl rewrite
+
 # Copy your application code to the container
 COPY . /var/www/html/
 
