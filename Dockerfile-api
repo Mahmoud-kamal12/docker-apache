@@ -4,9 +4,9 @@ FROM php:8.0-apache
 RUN docker-php-ext-install pdo pdo_mysql
 
 # Copy your application code to the container
-COPY . /var/www/html/
+COPY ./api/* /var/www/html/
 
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY ./api.black-devil.click.conf /etc/apache2/sites-available/api.black-devil.click.conf
 
 RUN a2enmod ssl rewrite
 

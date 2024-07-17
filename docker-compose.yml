@@ -6,11 +6,11 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.php-apache.rule=Host(`portal.trio-travel.com`)"
+      - "traefik.http.routers.php-apache.rule=Host(`black-devil.click`)"
       - "traefik.http.services.php-apache.loadbalancer.server.port=80"
       - "traefik.http.routers.php-apache.tls.certresolver=letsencrypt"
     volumes:
-      - ./:/var/www/html
+      - ./web:/var/www/html
 networks:
   test-network:
     external: true

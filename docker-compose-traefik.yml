@@ -21,7 +21,7 @@ services:
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /var/www/letsencrypt/acme.json:/etc/traefik/acme/acme.json
+      - ./acme.json:/etc/traefik/acme/acme.json
     labels:
       - "traefik.enable=true"
 #      - "traefik.http.routers.dashboard-http.entrypoints=web"
